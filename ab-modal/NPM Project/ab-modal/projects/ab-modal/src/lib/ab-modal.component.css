@@ -39,6 +39,7 @@
 
 .modal-content {
   padding: 0px 10px;
+  overflow: auto;
 }
 
 .modal-closeButtonContainer {
