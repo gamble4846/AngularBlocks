@@ -1,0 +1,15 @@
+<button (click)="showGsModal()">Show Modal</button>
+<ab-modal [ShowModal]="showModal" (OnModalClosed)="hideModal($event)" ModalWidth="1200px" ModalHeight="600px"
+  ModalBackgroundColor="#00000066">
+  <div header>Header</div>
+  <div content>Content</div>
+  <div footer>Footer</div>
+</ab-modal>
+
+<button (click)="showGsModal2()">Show Modal 2</button>
+<ab-modal [ShowModal]="showModal2" (OnModalClosed)="hideModal2($event)" ModalWidth="1200px" ModalHeight="600px"
+  ModalBackgroundColor="#00000066">
+  <div header>Header2</div>
+  <div content>Content2</div>
+  <div footer>Footer2</div>
+</ab-modal>
