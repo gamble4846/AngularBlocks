@@ -8,6 +8,7 @@ import { MenuStyles, MenuData, RGBModel } from './infinite-menu.service';
   ]
 })
 export class InfiniteMenuComponent {
+
   @Input() MenuModel: Array<MenuData> = [];
   @Input() RGB:RGBModel = { r: 0, g: 21, b: 40 }
   @Input() ShadeMultiplier:number = 1;
@@ -22,6 +23,7 @@ export class InfiniteMenuComponent {
   @Output() MenuModelChange = new EventEmitter<Array<MenuData>>();
   @Output() MenuSelected = new EventEmitter<MenuData>();
   @Output() MenuOpenCloseChanged = new EventEmitter<MenuData>();
+  @Output() MenuItemOnContextMenu = new EventEmitter<any>();
   
   constructor(
     
@@ -72,4 +74,8 @@ export class InfiniteMenuComponent {
       this._UnselectAll(_MenuData);
     })
   }  
+
+  _MenuItemOnContextMenu(EventData:any){
+    this.MenuItemOnContextMenu.emit(EventData);
+  }
 }

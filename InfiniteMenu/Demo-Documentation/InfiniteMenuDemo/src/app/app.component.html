@@ -38,7 +38,7 @@
 <div style="display: flex">
   <div class="InfiniteMenuInnerContainer" [ngClass]="{'open': SmallMenuOpen}" #InfiniteMenuInnerContainer>
     <InfiniteMenu #InfiniteMenu [(MenuModel)]="data" [RGB]="RGB_DATA" [ShadeMultiplier]="2" [ShowOpenForAll]="false"
-      (MenuSelected)="_MenuSelected($event)" (MenuOpenCloseChanged)="_MenuOpenCloseChanged($event)"
+      (MenuSelected)="_MenuSelected($event)" (MenuOpenCloseChanged)="_MenuOpenCloseChanged($event)" (MenuItemOnContextMenu)="_MenuItemOnContextMenu($event)"
       [IconHeight]="'25px'" [IconWidth]="'25px'" [MenuStyles]="MenuStyles" [Loading]="false" [ShowOnlyIcon]="false">
     </InfiniteMenu>
   </div>

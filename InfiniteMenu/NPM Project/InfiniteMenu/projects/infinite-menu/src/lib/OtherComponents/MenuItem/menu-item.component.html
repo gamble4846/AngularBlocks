@@ -1,6 +1,6 @@
 <ng-container *ngIf="MenuModel">
     <div [ngClass]="{'open': Menu.IsOpen}" class="OptionContainer" *ngFor="let Menu of MenuModel" #OptionContainer [ngStyle]="{'background-color': GetBackgoundColor(Menu)}">
-        <div class="OptionHead" #OptionHead [ngStyle]="{'color': GetTextColor(Menu) }" (mouseenter)="HoverOnMenu_MouseEnter(Menu, OptionHead)" (mouseleave)="HoverOnMenu_MouseLeave(Menu, OptionHead)">
+        <div (contextmenu)="_MenuItemOnContextMenu($event, Menu)" class="OptionHead" #OptionHead [ngStyle]="{'color': GetTextColor(Menu) }" (mouseenter)="HoverOnMenu_MouseEnter(Menu, OptionHead)" (mouseleave)="HoverOnMenu_MouseLeave(Menu, OptionHead)">
             <div class="TitleOuterContainer" (click)="_MenuSelected(Menu)" [ngStyle]="{'padding-left': 'calc(10px + ' + GetPadding(Menu.MenuLoc) +')', 'width': GetMenuHeadWithWithOUtArrow(Menu)}">
                 <div class="IconsContainer" [ngClass]="{'ShowOnlyIcon': ShowOnlyIcon}">
                     <ng-container *ngIf="Menu.IconType == IconType.SVG && Menu.Icon">
@@ -37,6 +37,7 @@
                 [SingleMenuHeight]="SingleMenuHeight"
                 (MenuSelected)="_MenuSelected($event)"
                 (MenuOpenCloseChanged)="_MenuOpenCloseChanged($event)"
+                (MenuItemOnContextMenu)="_MenuItemOnContextMenu2($event)"
             ></menu-item>
         </div>
     </div>

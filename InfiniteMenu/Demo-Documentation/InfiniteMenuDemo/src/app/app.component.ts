@@ -673,4 +673,8 @@ export class AppComponent {
       this.data = this.data.slice();
     }
   }
+
+  _MenuItemOnContextMenu(EventData:any){
+    console.log(EventData);
+  }
 }

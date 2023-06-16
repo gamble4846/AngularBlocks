@@ -20,6 +20,7 @@ export class MenuItemComponent {
 
   @Output() MenuSelected = new EventEmitter<MenuData>();
   @Output() MenuOpenCloseChanged = new EventEmitter<MenuData>();
+  @Output() MenuItemOnContextMenu = new EventEmitter<any>();
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -174,5 +175,18 @@ export class MenuItemComponent {
 
     Element.style.backgroundColor = this.GetBackgoundColor(MenuData);
     Element.style.color = this.GetTextColor(MenuData);
+  }
+
+  
+  _MenuItemOnContextMenu(EventData:any, MenuModel:MenuData){
+    var Data = {
+      "EventData": EventData,
+      "MenuModel": MenuModel
+    }
+    this.MenuItemOnContextMenu.emit(Data);
+  }
+
+  _MenuItemOnContextMenu2(EventData:any){
+    this.MenuItemOnContextMenu.emit(EventData);
   }
 }

@@ -21,6 +21,7 @@ export class InfiniteMenuComponent {
   @Output() MenuModelChange = new EventEmitter<Array<MenuData>>();
   @Output() MenuSelected = new EventEmitter<MenuData>();
   @Output() MenuOpenCloseChanged = new EventEmitter<MenuData>();
+  @Output() MenuItemOnContextMenu = new EventEmitter<any>();
   
   constructor(
     
@@ -71,4 +72,8 @@ export class InfiniteMenuComponent {
       this._UnselectAll(_MenuData);
     })
   }  
+
+  _MenuItemOnContextMenu(EventData:any){
+    this.MenuItemOnContextMenu.emit(EventData);
+  }
 }
