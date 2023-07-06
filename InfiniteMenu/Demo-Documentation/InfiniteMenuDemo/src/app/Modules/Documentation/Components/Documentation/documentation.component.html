@@ -34,15 +34,69 @@
     <div class="SectionHeader">Installation</div>
     <div class="SectionContent">
       <p>Step 1 : Install Using - </p>
-      <p class="CodeParagraph">npm install infinitemenu</p>
+      <p class="CodeParagraph">npm install infinite-menu</p>
     </div>
     <div class="SectionContent">
       <p>Step 2 : Import the module (InfiniteMenuModule) into your application's app.module.ts - </p>
       <p class="CodeParagraph"><code [innerHTML]="ImportModuleCodeSnippet"></code></p>
     </div>
     <div class="SectionContent">
-        <p>Step 3 : Import the Styles - </p>
-        <p class="CodeParagraph"><code [innerHTML]="ImportStylesSnippet"></code></p>
+      <p>Step 3 : Import the Styles - </p>
+      <p class="CodeParagraph"><code [innerHTML]="ImportStylesSnippet"></code></p>
+    </div>
+  </section>
+  <section class="SectionContainer" id="InputsSection">
+    <div class="SectionHeader">Inputs</div>
+    <div class="SectionContent">
+      <div id="InputsSection_MenuModel">
+        <p><b>1. [(MenuModel)]</b></p>
+        <p class="CodeParagraph">@Input() MenuModel: Array&lt;MenuData&gt; = [];</p>
+        <p>This is a two way binded Model that must contain data for the menu</p>
+        <p class="CodeParagraph">export interface MenuData &#123;<br>&nbsp;&nbsp;&nbsp;&nbsp; Title:
+          string,<br>&nbsp;&nbsp;&nbsp;&nbsp; Children:
+          Array&lt;MenuData&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp; MenuLoc?:number,<br>&nbsp;&nbsp;&nbsp;&nbsp;
+          IsOpen?:boolean,<br>&nbsp;&nbsp;&nbsp;&nbsp; CustomData?:any,<br>&nbsp;&nbsp;&nbsp;&nbsp;
+          Id?:string,<br>&nbsp;&nbsp;&nbsp;&nbsp; Icon?:
+          string,<br>&nbsp;&nbsp;&nbsp;&nbsp; IconType?: IconType,<br>&nbsp;&nbsp;&nbsp;&nbsp; OpenSubOnAnyClick?:
+          boolean<br>
+          &#x7D;<br></p>
+        <ol>
+          <li>Title - In this interface, Title is the name of the menu that is displayed in the view</li>
+          <li>Children - Children is the array of MenuModel that contains all the Children of the current menu</li>
+          <li>MenuLoc? - MenuLoc (Menu location) is an optional value that is updated by the code and anyvalue added
+            manually will be overwritten, with current location
+            for example, in the menu bar on left side of your screen [Documentation, Food, Drinks ....] are on location
+            1,
+            Open Documentation and you'll see [Introduction, Getting Started, Installation, Inputs ....] are on location
+            2, Open Inputs and you'll see [[(MenuModel)] ....] these are on location 3 and so on...</li>
+          <li>IsOpen? - IsOpen is an optional boolean that specifies if the current menu is open or not meaning if the
+            children of current menu is being displayed or not</li>
+          <li>Id? - Id is an optional value that is unique for all the menu items, if you dont specify the id manually a
+            random id is generated and added to the menu on initialization</li>
+          <li>Icon? - Icon is an optional value that can accept, SVG code, Image URL and FluentIcon Name depending upon
+            IconType</li>
+          <li>IconType? - Icon Type is an optional value that asks for a Enum value from [enum IconType]</li>
+          <li>OpenSubOnAnyClick? - OpenSubOnAnyClick is an optional boolean that specifies if the children should open
+            even if the user clicks on the title by default this is set to false for all Menu Items</li>
+        </ol>
       </div>
+      <div id="InputsSection_ShowOpenForAll">
+        <p><b>2. ShowOpenForAll</b></p>
+        <p class="CodeParagraph">@Input() ShowOpenForAll: boolean = false;</p>
+        <p>ShowOpenForAll is a boolean value used to specific if the open button (Down Caret on right side of the menu
+          item) should be shown for all menu items or not, by default this is set to false, meaning the open button will
+          be only shown if the menu item contains children </p>
+      </div>
+      <div id="InputsSection_IconHeight">
+        <p><b>3. IconHeight</b></p>
+        <p class="CodeParagraph">@Input() IconHeight: string = "25px";</p>
+        <p>This is used to set the height of the icon, by default this is set to 25px</p>
+      </div>
+      <div id="InputsSection_IconWidth">
+        <p><b>4. IconWidth</b></p>
+        <p class="CodeParagraph">@Input() IconWidth: string = "25px";</p>
+        <p>This is used to set the width of the icon, by default this is set to 25px</p>
+      </div>
+    </div>
   </section>
 </section>

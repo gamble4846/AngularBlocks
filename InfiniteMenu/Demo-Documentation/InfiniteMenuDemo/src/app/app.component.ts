@@ -64,6 +64,42 @@ export class AppComponent {
           "Icon": ``,
           "Children": [],
           "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InstallationSection" }
+        },
+        {
+          "Title": "Inputs",
+          "IconType": IconType.SVG,
+          "Icon": ``,
+          "Children": [
+            {
+              "Title": "[(MenuModel)]",
+              "IconType": IconType.SVG,
+              "Icon": ``,
+              "Children": [],
+              "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_MenuModel" }
+            },
+            {
+              "Title": "ShowOpenForAll",
+              "IconType": IconType.SVG,
+              "Icon": ``,
+              "Children": [],
+              "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_ShowOpenForAll" }
+            },
+            {
+              "Title": "IconHeight",
+              "IconType": IconType.SVG,
+              "Icon": ``,
+              "Children": [],
+              "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_IconHeight" }
+            },
+            {
+              "Title": "IconWidth",
+              "IconType": IconType.SVG,
+              "Icon": ``,
+              "Children": [],
+              "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_IconWidth" }
+            }
+          ],
+          "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection" }
         }
       ],
       "CustomData": { RouteTo: "/Documentation" }
@@ -674,7 +710,7 @@ export class AppComponent {
     }
   }
 
-  _MenuItemOnContextMenu(EventData:any){
+  _MenuItemOnContextMenu(EventData: any) {
     console.log(EventData);
   }
 }
