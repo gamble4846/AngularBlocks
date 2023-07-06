@@ -81,21 +81,40 @@
         </ol>
       </div>
       <div id="InputsSection_ShowOpenForAll">
-        <p><b>2. ShowOpenForAll</b></p>
+        <p><b>2. Show Open For All</b></p>
         <p class="CodeParagraph">@Input() ShowOpenForAll: boolean = false;</p>
         <p>ShowOpenForAll is a boolean value used to specific if the open button (Down Caret on right side of the menu
           item) should be shown for all menu items or not, by default this is set to false, meaning the open button will
           be only shown if the menu item contains children </p>
       </div>
       <div id="InputsSection_IconHeight">
-        <p><b>3. IconHeight</b></p>
+        <p><b>3. Icon Height</b></p>
         <p class="CodeParagraph">@Input() IconHeight: string = "25px";</p>
         <p>This is used to set the height of the icon, by default this is set to 25px</p>
       </div>
       <div id="InputsSection_IconWidth">
-        <p><b>4. IconWidth</b></p>
+        <p><b>4. Icon Width</b></p>
         <p class="CodeParagraph">@Input() IconWidth: string = "25px";</p>
         <p>This is used to set the width of the icon, by default this is set to 25px</p>
+      </div>
+      <div id="InputsSection_Loading">
+        <p><b>5. Loading</b></p>
+        <p class="CodeParagraph">@Input() Loading: boolean = false;</p>
+        <p>This is used to Specify if the Menu is loading or not, by default this is set to FALSE</p>
+      </div>
+      <div id="InputsSection_ShowOnlyIcon">
+        <p><b>6. Show Only Icon</b></p>
+        <p class="CodeParagraph">@Input() ShowOnlyIcon: boolean = false;</p>
+        <p>This is used to specify whether the title should be shown or not. It is basically used when the menu is
+          collapsed and only icons are needed to be shown. So, if you have something where a small menu (width) is
+          supposed to be shown on a mobile screen, this option is for you.u</p>
+      </div>
+      <div id="InputsSection_MenuStyles">
+        <p><b>7. Menu Styles</b></p>
+        <p class="CodeParagraph">@Input() MenuStyles: Array&lt;MenuStyles&gt; = [];</p>
+        <p>This is used to specify whether the title should be shown or not. It is basically used when the menu is
+          collapsed and only icons are needed to be shown. So, if you have something where a small menu (width) is
+          supposed to be shown on a mobile screen, this option is for you.u</p>
       </div>
     </div>
   </section>

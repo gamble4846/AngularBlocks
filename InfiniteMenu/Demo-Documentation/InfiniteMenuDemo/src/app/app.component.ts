@@ -71,32 +71,46 @@ export class AppComponent {
           "Icon": ``,
           "Children": [
             {
-              "Title": "[(MenuModel)]",
+              "Title": "Menu Model",
               "IconType": IconType.SVG,
               "Icon": ``,
               "Children": [],
               "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_MenuModel" }
             },
             {
-              "Title": "ShowOpenForAll",
+              "Title": "Show Open For All",
               "IconType": IconType.SVG,
               "Icon": ``,
               "Children": [],
               "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_ShowOpenForAll" }
             },
             {
-              "Title": "IconHeight",
+              "Title": "Icon Height",
               "IconType": IconType.SVG,
               "Icon": ``,
               "Children": [],
               "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_IconHeight" }
             },
             {
-              "Title": "IconWidth",
+              "Title": "Icon Width",
               "IconType": IconType.SVG,
               "Icon": ``,
               "Children": [],
               "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_IconWidth" }
+            },
+            {
+              "Title": "Loading",
+              "IconType": IconType.SVG,
+              "Icon": ``,
+              "Children": [],
+              "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_Loading" }
+            },
+            {
+              "Title": "Show Only Icon",
+              "IconType": IconType.SVG,
+              "Icon": ``,
+              "Children": [],
+              "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection_ShowOnlyIcon" }
             }
           ],
           "CustomData": { RouteTo: "/Documentation", Type: "DocumentationChildren", ElementId: "InputsSection" }
