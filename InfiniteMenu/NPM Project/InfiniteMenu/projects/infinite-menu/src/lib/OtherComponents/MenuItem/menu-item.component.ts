@@ -153,6 +153,7 @@ export class MenuItemComponent {
     tooltip.style.height = "max-content";
     tooltip.style.width = "max-content";
     tooltip.classList.add(MenuData.Id + "ElementId");
+    tooltip.classList.add("Tooltip_InfiniteMenu");
     tooltip.style.top = rect.top + "px";
     tooltip.style.left = rect.left + Element.offsetWidth + 10 + "px";
     tooltip.style.color = "white";
@@ -165,6 +166,13 @@ export class MenuItemComponent {
   }
 
   HoverOnMenu_MouseLeave(MenuData: MenuData, Element: HTMLElement) {
+    let elementsAll = document.getElementsByClassName("Tooltip_InfiniteMenu");
+    for (let index = 0; index < elementsAll.length; index++) {
+      const element = elementsAll[index];
+      if (element)
+        element.remove();
+    }
+
     let elements = document.getElementsByClassName(MenuData.Id + "ElementId");
     for (let index = 0; index < elements.length; index++) {
       const element = elements[index];
