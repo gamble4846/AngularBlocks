@@ -68,6 +68,10 @@
   width: 100%;
 }
 
+.IconsContainer.ShowOnlyIcon{
+  padding: 0px !important;
+}
+
 .MenuTitleContainer{
   display: flex;
   justify-content: left;
