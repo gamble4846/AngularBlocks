@@ -1,14 +1,14 @@
 {
   "name": "infinite-menu",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Infinite Menu helps you to create a menu with infinite number of sub menus",
   "keywords": ["Menu", "Side", "List", "Infinite", "Sub"],
   "repository": "https://github.com/gamble4846/AngularBlocks",
   "homepage": "https://gamble4846.github.io/AngularBlocks/InfiniteMenu/",
   "author": "Rohan Patel <rohanpatel4846@gmail.com>",
   "peerDependencies": {
-    "@angular/common": "^15.0.0",
-    "@angular/core": "^15.0.0"
+    "@angular/common": "^17.0.0",
+    "@angular/core": "^17.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
