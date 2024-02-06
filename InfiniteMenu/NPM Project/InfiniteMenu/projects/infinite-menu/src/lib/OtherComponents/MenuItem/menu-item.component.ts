@@ -30,6 +30,10 @@ export class MenuItemComponent {
     return IconType;
   }
 
+  GetDomSanitizeredImage(image:string){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(image);
+  }
+
   ToggleOption(Id: string | undefined) {
     if (Id) {
       var menu = this.MenuModel.find(x => x.Id == Id);

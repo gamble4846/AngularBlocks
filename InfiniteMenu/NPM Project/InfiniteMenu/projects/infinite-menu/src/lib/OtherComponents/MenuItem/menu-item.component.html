@@ -10,7 +10,7 @@
                         <div [innerHTML]="_InfiniteMenu.GetFluentUiIconsSvgName(Menu.Icon)" [ngStyle]="{ 'height': IconHeight, 'width': IconWidth }"></div>
                     </ng-container>
                     <ng-container *ngIf="Menu.IconType == IconType.Image && Menu.Icon">
-                        <img src="{{Menu.Icon}}" class="MenuIcon" [ngStyle]="{ 'height': IconHeight, 'width': IconWidth }">
+                        <img [src]="GetDomSanitizeredImage(Menu.Icon)" class="MenuIcon" [ngStyle]="{ 'height': IconHeight, 'width': IconWidth }">
                     </ng-container>
                     <ng-container *ngIf="!Menu.Icon && ShowOnlyIcon">
                         <b>{{Menu.Title[0].toUpperCase()}}</b>
