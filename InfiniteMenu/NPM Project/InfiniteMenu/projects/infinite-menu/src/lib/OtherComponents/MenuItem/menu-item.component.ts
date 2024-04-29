@@ -1,21 +1,35 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  TemplateRef,
+} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { InfiniteMenuService, IconType, MenuStyles, MenuData, RGBModel } from '../../infinite-menu.service';
+import {
+  InfiniteMenuService,
+  IconType,
+  MenuStyles,
+  MenuData,
+  RGBModel,
+} from '../../infinite-menu.service';
 
 @Component({
   selector: 'menu-item',
-  templateUrl: './menu-item.component.html'
+  templateUrl: './menu-item.component.html',
 })
 export class MenuItemComponent {
   @Input() MenuModel: Array<MenuData> = [];
-  @Input() RGB: RGBModel = { r: 0, g: 21, b: 40 }
+  @Input() RGB: RGBModel = { r: 0, g: 21, b: 40 };
   @Input() ShadeMultiplier: number = 1;
   @Input() ShowOpenForAll: boolean = false;
-  @Input() IconHeight: string = "25px";
-  @Input() IconWidth: string = "25px";
+  @Input() IconHeight: string = '25px';
+  @Input() IconWidth: string = '25px';
   @Input() MenuStyles: Array<MenuStyles> = [];
   @Input() ShowOnlyIcon: boolean = false;
   @Input() SingleMenuHeight: number = 45;
+  @Input() ContextMenuTemplate: TemplateRef<any> | null = null;
 
   @Output() MenuSelected = new EventEmitter<MenuData>();
   @Output() MenuOpenCloseChanged = new EventEmitter<MenuData>();
@@ -24,19 +38,19 @@ export class MenuItemComponent {
   constructor(
     private sanitizer: DomSanitizer,
     public _InfiniteMenu: InfiniteMenuService
-  ) { }
+  ) {}
 
   public get IconType(): typeof IconType {
     return IconType;
   }
 
-  GetDomSanitizeredImage(image:string){
+  GetDomSanitizeredImage(image: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(image);
   }
 
   ToggleOption(Id: string | undefined) {
     if (Id) {
-      var menu = this.MenuModel.find(x => x.Id == Id);
+      var menu = this.MenuModel.find((x) => x.Id == Id);
       if (menu) {
         menu.IsOpen = !menu.IsOpen;
       }
@@ -48,13 +62,14 @@ export class MenuItemComponent {
   GetBackgoundColor(MenuData: MenuData) {
     let Loc = MenuData.MenuLoc;
     let localRGB = structuredClone(this.RGB);
-    if (!Loc)
-      Loc = 1;
+    if (!Loc) Loc = 1;
     localRGB.r = localRGB.r * (Loc * this.ShadeMultiplier);
     localRGB.g = localRGB.g * (Loc * this.ShadeMultiplier);
     localRGB.b = localRGB.b * (Loc * this.ShadeMultiplier);
 
-    let currentMenuStyle = structuredClone(this.MenuStyles.find(x => x.Location == Loc));
+    let currentMenuStyle = structuredClone(
+      this.MenuStyles.find((x) => x.Location == Loc)
+    );
 
     if (currentMenuStyle && currentMenuStyle.BackgroundColor) {
       return currentMenuStyle.BackgroundColor;
@@ -64,7 +79,9 @@ export class MenuItemComponent {
   }
 
   GetTextColor(MenuData: MenuData) {
-    let currentMenuStyle = structuredClone(this.MenuStyles.find(x => x.Location == MenuData.MenuLoc));
+    let currentMenuStyle = structuredClone(
+      this.MenuStyles.find((x) => x.Location == MenuData.MenuLoc)
+    );
 
     if (currentMenuStyle && currentMenuStyle.TextColor) {
       return currentMenuStyle.TextColor;
@@ -74,7 +91,9 @@ export class MenuItemComponent {
   }
 
   GetPadding(Loc: number | undefined) {
-    let currentMenuStyle = structuredClone(this.MenuStyles.find(x => x.Location == Loc));
+    let currentMenuStyle = structuredClone(
+      this.MenuStyles.find((x) => x.Location == Loc)
+    );
     if (currentMenuStyle && currentMenuStyle.PaddingLeft) {
       return currentMenuStyle.PaddingLeft;
     }
@@ -83,7 +102,9 @@ export class MenuItemComponent {
   }
 
   GetOnHoverBackgroundColor(Loc: number | undefined) {
-    let currentMenuStyle = structuredClone(this.MenuStyles.find(x => x.Location == Loc));
+    let currentMenuStyle = structuredClone(
+      this.MenuStyles.find((x) => x.Location == Loc)
+    );
     if (currentMenuStyle && currentMenuStyle.OnHoverBackgroundColor) {
       return currentMenuStyle.OnHoverBackgroundColor;
     }
@@ -92,7 +113,9 @@ export class MenuItemComponent {
   }
 
   GetOnHoverTextColor(Loc: number | undefined) {
-    let currentMenuStyle = structuredClone(this.MenuStyles.find(x => x.Location == Loc));
+    let currentMenuStyle = structuredClone(
+      this.MenuStyles.find((x) => x.Location == Loc)
+    );
     if (currentMenuStyle && currentMenuStyle.OnHoverTextColor) {
       return currentMenuStyle.OnHoverTextColor;
     }
@@ -111,18 +134,18 @@ export class MenuItemComponent {
     return widthString;
   }
 
-  GetOptionBodyHeight(MenuData: MenuData){
-    if(MenuData.IsOpen){
-      var toReturn = this.GetChildBodyHeight(MenuData) + "px";
+  GetOptionBodyHeight(MenuData: MenuData) {
+    if (MenuData.IsOpen) {
+      var toReturn = this.GetChildBodyHeight(MenuData) + 'px';
       return toReturn;
     }
-    return "0px";
+    return '0px';
   }
 
-  GetChildBodyHeight(MenuData: MenuData){
-    if(MenuData.IsOpen){
+  GetChildBodyHeight(MenuData: MenuData) {
+    if (MenuData.IsOpen) {
       let total = 45;
-      MenuData.Children.forEach(Menu => {
+      MenuData.Children.forEach((Menu) => {
         total += this.GetChildBodyHeight(Menu);
       });
 
@@ -132,10 +155,9 @@ export class MenuItemComponent {
   }
 
   _MenuSelected(MenuData: MenuData) {
-    if(MenuData.OpenSubOnAnyClick){
+    if (MenuData.OpenSubOnAnyClick) {
       this.ToggleOption(MenuData.Id);
-    }
-    else{
+    } else {
       this.MenuSelected.emit(MenuData);
     }
   }
@@ -150,54 +172,53 @@ export class MenuItemComponent {
 
   HoverOnMenu_MouseEnter(MenuData: MenuData, Element: HTMLElement) {
     var rect = Element.getBoundingClientRect();
-    var tooltip = document.createElement("div");
+    var tooltip = document.createElement('div');
     tooltip.innerHTML = MenuData.Title;
-    tooltip.style.position = "fixed";
-    tooltip.style.backgroundColor = "#00000096";
-    tooltip.style.height = "max-content";
-    tooltip.style.width = "max-content";
-    tooltip.classList.add(MenuData.Id + "ElementId");
-    tooltip.classList.add("Tooltip_InfiniteMenu");
-    tooltip.style.top = rect.top + "px";
-    tooltip.style.left = rect.left + Element.offsetWidth + 10 + "px";
-    tooltip.style.color = "white";
-    tooltip.style.padding = "10px";
-    tooltip.style.borderRadius = "5px";
-    document.getElementsByTagName("body")[0].appendChild(tooltip);
+    tooltip.style.position = 'fixed';
+    tooltip.style.backgroundColor = '#00000096';
+    tooltip.style.height = 'max-content';
+    tooltip.style.width = 'max-content';
+    tooltip.classList.add(MenuData.Id + 'ElementId');
+    tooltip.classList.add('Tooltip_InfiniteMenu');
+    tooltip.style.top = rect.top + 'px';
+    tooltip.style.left = rect.left + Element.offsetWidth + 10 + 'px';
+    tooltip.style.color = 'white';
+    tooltip.style.padding = '10px';
+    tooltip.style.borderRadius = '5px';
+    document.getElementsByTagName('body')[0].appendChild(tooltip);
 
-    Element.style.backgroundColor = this.GetOnHoverBackgroundColor(MenuData.MenuLoc);
+    Element.style.backgroundColor = this.GetOnHoverBackgroundColor(
+      MenuData.MenuLoc
+    );
     Element.style.color = this.GetOnHoverTextColor(MenuData.MenuLoc);
   }
 
   HoverOnMenu_MouseLeave(MenuData: MenuData, Element: HTMLElement) {
-    let elementsAll = document.getElementsByClassName("Tooltip_InfiniteMenu");
+    let elementsAll = document.getElementsByClassName('Tooltip_InfiniteMenu');
     for (let index = 0; index < elementsAll.length; index++) {
       const element = elementsAll[index];
-      if (element)
-        element.remove();
+      if (element) element.remove();
     }
 
-    let elements = document.getElementsByClassName(MenuData.Id + "ElementId");
+    let elements = document.getElementsByClassName(MenuData.Id + 'ElementId');
     for (let index = 0; index < elements.length; index++) {
       const element = elements[index];
-      if (element)
-        element.remove();
+      if (element) element.remove();
     }
 
     Element.style.backgroundColor = this.GetBackgoundColor(MenuData);
     Element.style.color = this.GetTextColor(MenuData);
   }
 
-  
-  _MenuItemOnContextMenu(EventData:any, MenuModel:MenuData){
+  _MenuItemOnContextMenu(EventData: any, MenuModel: MenuData) {
     var Data = {
-      "EventData": EventData,
-      "MenuModel": MenuModel
-    }
+      EventData: EventData,
+      MenuModel: MenuModel,
+    };
     this.MenuItemOnContextMenu.emit(Data);
   }
 
-  _MenuItemOnContextMenu2(EventData:any){
+  _MenuItemOnContextMenu2(EventData: any) {
     this.MenuItemOnContextMenu.emit(EventData);
   }
 }
