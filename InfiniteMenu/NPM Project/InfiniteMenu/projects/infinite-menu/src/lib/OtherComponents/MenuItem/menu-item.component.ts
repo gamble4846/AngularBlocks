@@ -16,8 +16,9 @@ import {
 } from '../../infinite-menu.service';
 
 @Component({
-  selector: 'menu-item',
-  templateUrl: './menu-item.component.html',
+    selector: 'menu-item',
+    templateUrl: './menu-item.component.html',
+    standalone: false
 })
 export class MenuItemComponent {
   @Input() MenuModel: Array<MenuData> = [];

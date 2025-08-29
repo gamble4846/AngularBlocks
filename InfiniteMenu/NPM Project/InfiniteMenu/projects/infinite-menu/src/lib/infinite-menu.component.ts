@@ -9,9 +9,10 @@ import {
 import { MenuStyles, MenuData, RGBModel } from './infinite-menu.service';
 
 @Component({
-  selector: 'InfiniteMenu',
-  templateUrl: './infinite-menu.component.html',
-  styles: [],
+    selector: 'InfiniteMenu',
+    templateUrl: './infinite-menu.component.html',
+    styles: [],
+    standalone: false
 })
 export class InfiniteMenuComponent {
   @Input() MenuModel: Array<MenuData> = [];
